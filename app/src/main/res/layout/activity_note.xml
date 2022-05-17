@@ -33,6 +33,21 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/colorIcons" />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="290dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/TextInputData"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageback"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/done_arrow"
+                app:tint="@color/colorIcons" />
+
             <EditText
                android:id="@+id/TextInputData"
                 android:layout_width="match_parent"
