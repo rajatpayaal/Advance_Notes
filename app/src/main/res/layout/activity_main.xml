@@ -19,14 +19,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/layoutSearch"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
 
     <LinearLayout
         android:id="@+id/layoutSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_width="312dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/background_search"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -34,7 +36,7 @@
         android:paddingEnd="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="@id/textMyNotes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -44,6 +46,15 @@
             android:layout_height="@dimen/_20sdp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_search" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="335dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Search_notes" />
     </LinearLayout>
 
 
