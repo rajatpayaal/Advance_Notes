@@ -34,29 +34,29 @@
                 app:tint="@color/colorIcons" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imagedone"
                 android:layout_width="45dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="290dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/TextInputData"
+                app:layout_constraintBottom_toTopOf="@+id/InputNoteTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageback"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/done_arrow"
-                app:tint="@color/colorIcons" />
+                app:tint="@color/colorIcons"
+                android:contentDescription="TODO" />
 
             <EditText
-               android:id="@+id/TextInputData"
+                android:id="@+id/InputNoteTitle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
 
-                android:hint="Note Tile"
+                android:hint="   Note Tile"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
@@ -64,9 +64,53 @@
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorTextHint"
                 android:textSize="@dimen/_16sdp"
-                app:layout_constraintTop_toBottomOf="@id/imageback"/>
+                app:layout_constraintBottom_toTopOf="@+id/textDateTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageback"
+                tools:ignore="TouchTargetSizeCheck" />
 <!--            android:background="null"-->
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textDateTime"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorIcons"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@id/InputNoteTitle"
+                app:layout_constraintStart_toStartOf="@id/InputNoteTitle"
+                app:layout_constraintTop_toBottomOf="@id/InputNoteTitle"
+                />
+            <View
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:background="@drawable/background_subtitle_indicate"
+                app:layout_constraintBottom_toBottomOf="@id/InputNoteTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/InputNoteTitle"/>
+
+            <EditText
+                android:id="@+id/InputeNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="@string/type_note"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="textImeMultiLine"
+                android:minHeight="@dimen/_100sdp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/InputNoteTitle"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteX="16dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

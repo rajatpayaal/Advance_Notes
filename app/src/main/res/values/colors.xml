@@ -18,7 +18,7 @@
         <!--    <color name="white">#FFFFFFFF</color>-->
 <!--&lt;!&ndash;        <color name="colorPrimary">#292929</color>&ndash;&gt;-->
         <color name="colorPrimaryDark">#292929</color>
-<!--        <color name="colorAccent">#FDBE3B</color>-->
+        <color name="colorAccent">#FDBE3B</color>
         <color name="colorWhite">#FFFFFF</color>
 <!--&lt;!&ndash;        <color name="colorSearchIcon">#DBDBDBD</color>&ndash;&gt;-->
 <!--        <color name="colorDefaultNoteColor">#333333</color>-->
