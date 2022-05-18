@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newnote"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#373631"
@@ -56,6 +57,40 @@
             android:inputType="textPersonName"
             android:text="Search_notes" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noteRecycleview"
+        android:layout_width="404dp"
+        android:layout_height="499dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="9dp"
+        android:clipToPadding="false"
+
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@+id/newnote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/newnote"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="333dp"
+        android:layout_marginTop="473dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="61dp"
+        android:background="@drawable/background_addnote"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/new_note" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

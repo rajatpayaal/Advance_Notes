@@ -5,13 +5,15 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3335" />
         <entry key="app/src/main/res/drawable/arrow_left.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/background_addnote.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_search.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_subtitle_indicate.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/backround_search.xml" value="0.3335" />
         <entry key="app/src/main/res/drawable/done_arrow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.3335" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_note.xml" value="0.224" />
+        <entry key="app/src/main/res/drawable/new_note.xml" value="0.1065" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_note.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3335" />
       </map>
     </option>

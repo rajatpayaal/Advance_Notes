@@ -35,19 +35,18 @@
 
             <ImageView
                 android:id="@+id/imagedone"
-                android:layout_width="45dp"
+                android:layout_width="61dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="290dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="20dp"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_4sdp"
                 app:layout_constraintBottom_toTopOf="@+id/InputNoteTitle"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
                 app:layout_constraintStart_toEndOf="@+id/imageback"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.541"
                 app:srcCompat="@drawable/done_arrow"
-                app:tint="@color/colorIcons"
-                android:contentDescription="TODO" />
+                app:tint="@color/colorIcons" />
 
             <EditText
                 android:id="@+id/InputNoteTitle"
@@ -55,7 +54,6 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="@dimen/_15sdp"
-
                 android:hint="   Note Tile"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
