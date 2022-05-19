@@ -1,13 +1,13 @@
 #### Simple_Notes
 
 
-###Simple Notes App
+#Simple Notes App
 
 #Notes are a great way to keep track of information for yourself, but it also makes it easy to share information with others (like your grocery list with your husband!) Open a note you want to share and tap Share.
 
 
-##This app must be built in Java and run on Marshmallow 6.0 (API level 23).
-##Functionality:-
+#This app must be built in Java and run on Marshmallow 6.0 (API level 23).
+#Functionality:-
 	1. Create a new to do item and edit an existing item and permanently remove an item
 Todo: use of Recyclerview.. 
 
