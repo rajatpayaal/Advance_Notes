@@ -1,4 +1,4 @@
-package com.example.simple_notes;
+package com.example.simple_notes.acti_pack;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.simple_notes.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,15 +19,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView newnote =findViewById(R.id.newnote);
-                newnote.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivityForResult(
-                             new Intent(getApplicationContext(), note_activity.class),
-                                REQUES_CODE_ADD_NOTE
-                        );
-                    }
-                });
+        newnote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(
+                        new Intent(getApplicationContext(), note_activity.class),
+                        REQUES_CODE_ADD_NOTE
+                );
+            }
+        });
     }
 }
 

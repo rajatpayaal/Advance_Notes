@@ -1,10 +1,13 @@
-package com.example.simple_notes;
+package com.example.simple_notes.acti_pack;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.simple_notes.R;
 
 public class note_activity extends AppCompatActivity {
 
