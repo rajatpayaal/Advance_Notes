@@ -9,7 +9,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/_40sdp"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/_10sdp">
@@ -17,13 +17,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            >
+            android:animateLayoutChanges="true">
 
             <ImageView
                 android:id="@+id/imageback"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
@@ -48,17 +47,13 @@
                 app:srcCompat="@drawable/done_arrow"
                 app:tint="@color/colorIcons" />
 
-
-
-
-
-
             <EditText
                 android:id="@+id/InputNoteTitle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:background="@null"
                 android:hint="   Note Tile"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
@@ -67,31 +62,28 @@
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorTextHint"
                 android:textSize="@dimen/_16sdp"
-                android:background="@null"
                 app:layout_constraintBottom_toTopOf="@+id/textDateTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageback"
-                tools:ignore="TouchTargetSizeCheck" />
-<!--                  android:background="null"-->
+                app:layout_constraintTop_toBottomOf="@id/imageback" />
+            <!--                  android:background="null"-->
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/textDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
                 android:includeFontPadding="false"
                 android:textColor="@color/colorIcons"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="@id/InputNoteTitle"
                 app:layout_constraintStart_toStartOf="@id/InputNoteTitle"
-                app:layout_constraintTop_toBottomOf="@id/InputNoteTitle"
-                />
+                app:layout_constraintTop_toBottomOf="@id/InputNoteTitle" />
 
 
             <EditText
                 android:id="@+id/InputeNoteSublite"
-                android:layout_width="390dp"
-                android:layout_height="45dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
@@ -100,8 +92,8 @@
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="textImeMultiLine"
-                android:paddingTop="0.0dp"
-                android:paddingBottom="0.dp"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_8sdp"
                 android:textColor="@color/TextSubtitle"
                 android:textColorHint="@color/colorTextHint"
                 android:textSize="13.00dp"
@@ -117,37 +109,20 @@
                 android:background="@drawable/background_subtitle_indicate"
                 app:layout_constraintBottom_toBottomOf="@id/InputeNoteSublite"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/InputeNoteSublite"/>
+                app:layout_constraintTop_toTopOf="@id/InputeNoteSublite" />
 
-<!--            <EditText-->
-<!--                android:id="@+id/InputeNoteSublite"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="12dp"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:background="@null"-->
-<!--                android:hint="Note Subtitle"-->
-<!--                android:importantForAutofill="no"-->
-<!--                android:includeFontPadding="false"-->
-<!--                android:inputType="textImeMultiLine"-->
-<!--                android:paddingTop="0.0dp"-->
-<!--                android:paddingBottom="0.dp"-->
-<!--                android:textColor="@color/colorSubtitle"-->
-<!--                android:textColorHint="@color/colorTextHint"-->
-<!--                android:textSize="13.00dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                />-->
+
 
             <EditText
                 android:id="@+id/InputeNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
                 android:background="@null"
                 android:gravity="top"
-                android:hint="@string/type_note"
+                android:hint="Type our note here"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="textImeMultiLine"
@@ -156,7 +131,7 @@
                 android:textColorHint="@color/colorTextHint"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/InputNoteTitle"
+                app:layout_constraintTop_toBottomOf="@id/InputeNoteSublite"
                 tools:ignore="SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="16dp" />
 

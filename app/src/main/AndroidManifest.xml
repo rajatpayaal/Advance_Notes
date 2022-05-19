@@ -10,12 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Simple_Notes">
         <activity
-            android:name=".acti_pack.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".acti_pack.note_activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".acti_pack.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
