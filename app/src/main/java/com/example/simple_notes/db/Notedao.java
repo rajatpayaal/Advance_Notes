@@ -9,7 +9,8 @@ import com.example.simple_notes.entity.Note;
 
 import java.util.List;
 
-public interface notedb {
+@Dao
+public interface Notedao {
  @Query("SELECT * FROM notes ORDER BY id DESC")
     List<Note>getAllNOtes();
 
