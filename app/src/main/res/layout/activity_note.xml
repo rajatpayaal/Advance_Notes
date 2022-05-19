@@ -48,6 +48,11 @@
                 app:srcCompat="@drawable/done_arrow"
                 app:tint="@color/colorIcons" />
 
+
+
+
+
+
             <EditText
                 android:id="@+id/InputNoteTitle"
                 android:layout_width="match_parent"
@@ -62,12 +67,13 @@
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorTextHint"
                 android:textSize="@dimen/_16sdp"
+                android:background="@null"
                 app:layout_constraintBottom_toTopOf="@+id/textDateTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageback"
                 tools:ignore="TouchTargetSizeCheck" />
-<!--            android:background="null"-->
+<!--                  android:background="null"-->
 
             <TextView
                 android:layout_width="0dp"
@@ -80,14 +86,58 @@
                 app:layout_constraintStart_toStartOf="@id/InputNoteTitle"
                 app:layout_constraintTop_toBottomOf="@id/InputNoteTitle"
                 />
+
+
+            <EditText
+                android:id="@+id/InputeNoteSublite"
+                android:layout_width="390dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@null"
+                android:hint="Note Subtitle"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="textImeMultiLine"
+                android:paddingTop="0.0dp"
+                android:paddingBottom="0.dp"
+                android:textColor="@color/TextSubtitle"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="13.00dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/viewSubtitle"
+                app:layout_constraintTop_toBottomOf="@id/textDateTime" />
+
             <View
+                android:id="@+id/viewSubtitle"
                 android:layout_width="@dimen/_5sdp"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:background="@drawable/background_subtitle_indicate"
-                app:layout_constraintBottom_toBottomOf="@id/InputNoteTitle"
+                app:layout_constraintBottom_toBottomOf="@id/InputeNoteSublite"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/InputNoteTitle"/>
+                app:layout_constraintTop_toTopOf="@id/InputeNoteSublite"/>
+
+<!--            <EditText-->
+<!--                android:id="@+id/InputeNoteSublite"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="12dp"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:background="@null"-->
+<!--                android:hint="Note Subtitle"-->
+<!--                android:importantForAutofill="no"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:inputType="textImeMultiLine"-->
+<!--                android:paddingTop="0.0dp"-->
+<!--                android:paddingBottom="0.dp"-->
+<!--                android:textColor="@color/colorSubtitle"-->
+<!--                android:textColorHint="@color/colorTextHint"-->
+<!--                android:textSize="13.00dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                />-->
 
             <EditText
                 android:id="@+id/InputeNote"
