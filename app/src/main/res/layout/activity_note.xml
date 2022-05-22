@@ -33,7 +33,7 @@
                 app:tint="@color/colorIcons" />
 
             <ImageView
-                android:id="@+id/imagedone"
+                android:id="@+id/imageSave"
                 android:layout_width="61dp"
                 android:layout_height="48dp"
                 android:contentDescription="@string/app_name"

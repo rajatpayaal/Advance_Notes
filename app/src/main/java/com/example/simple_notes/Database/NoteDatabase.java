@@ -1,4 +1,4 @@
-package com.example.simple_notes.db.Database;
+package com.example.simple_notes.Database;
 import android.content.Context;
 
 import androidx.room.Database;

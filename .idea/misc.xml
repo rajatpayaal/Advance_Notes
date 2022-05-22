@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/msi/AndroidStudioProjects/Simple_Notes/app/src/main/res/drawable/arrow_left.xml" value="0.252" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/Simple_Notes/app/src/main/res/drawable/background_addnote.xml" value="0.252" />
         <entry key="..\:/Users/msi/AndroidStudioProjects/Simple_Notes/app/src/main/res/drawable/background_note.xml" value="0.2955" />
         <entry key="..\:/Users/msi/AndroidStudioProjects/Simple_Notes/app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
         <entry key="..\:/Users/msi/AndroidStudioProjects/Simple_Notes/app/src/main/res/layout/activity_note.xml" value="0.296195652173913" />

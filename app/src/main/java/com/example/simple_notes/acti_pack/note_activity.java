@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.simple_notes.R;
-import com.example.simple_notes.db.Database.NoteDatabase;
+import com.example.simple_notes.Database.NoteDatabase;
 import com.example.simple_notes.entity.Note;
 
 import java.text.SimpleDateFormat;
@@ -51,7 +51,7 @@ private TextView textDateTime;
                         Locale.getDefault()).format(new Date())
         );
 
-        ImageView imagedone=findViewById(R.id.imagedone);
+        ImageView imagedone=findViewById(R.id.imageSave);
                 imagedone.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
