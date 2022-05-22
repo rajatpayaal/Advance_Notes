@@ -21,7 +21,7 @@
         <color name="colorAccent">#FDBE3B</color>
         <color name="colorWhite">#FFFFFF</color>
 <!--&lt;!&ndash;        <color name="colorSearchIcon">#DBDBDBD</color>&ndash;&gt;-->
-<!--        <color name="colorDefaultNoteColor">#333333</color>-->
+        <color name="colorDefaultNoteColor">#333333</color>
 <!--        <color name="colorQuickActionsBackground">#2F2D2E</color>-->
         <color name="colorTextHint">#7B7B7B</color>
 <!--        <color name="colorQuickActionBackground">#2F2D2E</color>-->
