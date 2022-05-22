@@ -59,7 +59,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/noteRecycleview"
+        android:id="@+id/notesRecycleview"
         android:layout_width="404dp"
         android:layout_height="499dp"
         android:layout_marginEnd="3dp"
