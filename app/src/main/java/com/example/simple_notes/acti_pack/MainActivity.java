@@ -2,12 +2,16 @@ package com.example.simple_notes.acti_pack;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.simple_notes.R;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-}
+//    private void getNotes(){
+//        @SuppressLint("StaticFieldLeak")
+//                class GetNotesTask extends AsyncTask<Void,Void, List>
+    }
+
+//
+//}
 
 //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

@@ -65,7 +65,7 @@ private void saveNote(){
             Toast.makeText(this,"Note title not empty",Toast.LENGTH_SHORT).show();
             return;
 
-        }else if (inputeNotetitle.getText().toString().trim().isEmpty()
+        }else if (InputNoteSubtitle.getText().toString().trim().isEmpty()
         && InputeNote.getText().toString().trim().isEmpty()){
             Toast.makeText(this,"Note can't be empty",Toast.LENGTH_SHORT).show();
             return;
