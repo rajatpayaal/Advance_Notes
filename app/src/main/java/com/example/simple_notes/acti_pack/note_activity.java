@@ -21,8 +21,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class note_activity extends AppCompatActivity {
-private EditText inputeNotetitle ,InputeNote,InputNoteSubtitle,InputeNoteText;
-private TextView textDateTime;
+    private EditText inputeNotetitle ,InputeNoteText,InputNoteSubtitle;
+    private TextView textDateTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,29 +44,29 @@ private TextView textDateTime;
         inputeNotetitle = findViewById(R.id.InputNoteTitle);
         InputNoteSubtitle = findViewById(R.id.InputeNoteSublite);
 
-        InputeNote=findViewById(R.id.InputeNote);
+        InputeNoteText=findViewById(R.id.InputeNoteText);
         textDateTime=findViewById(R.id.textDateTime);
         textDateTime.setText(
                 new SimpleDateFormat("EEEE,dd MMMM yyy HH:mm a",
                         Locale.getDefault()).format(new Date())
         );
 
-        ImageView imagedone=findViewById(R.id.imageSave);
-                imagedone.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                     saveNote();
-                    }
-                });
+        ImageView imageSave=findViewById(R.id.imageSave);
+        imageSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveNote();
+            }
+        });
     }
 
-private void saveNote(){
+    private void saveNote(){
         if(inputeNotetitle.getText().toString().trim().isEmpty()){
             Toast.makeText(this,"Note title not empty",Toast.LENGTH_SHORT).show();
             return;
 
         }else if (InputNoteSubtitle.getText().toString().trim().isEmpty()
-        && InputeNote.getText().toString().trim().isEmpty()){
+                && InputeNoteText.getText().toString().trim().isEmpty()){
             Toast.makeText(this,"Note can't be empty",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -93,6 +93,6 @@ private void saveNote(){
             }
         }
 
-new SaveNoteText().execute();
-}
+        new SaveNoteText().execute();
     }
+}
