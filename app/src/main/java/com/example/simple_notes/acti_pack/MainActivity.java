@@ -1,3 +1,12 @@
+/*
+ * *
+ *  * Created by RAJAT PAYAL on 25 MAY 2020
+ *  * Copyright (c) 2022.year . All rights reserved.
+ *  * Last modified 25 MAY 2020
+ *
+ *
+ */
+
 package com.example.simple_notes.acti_pack;
 
 import androidx.annotation.Nullable;

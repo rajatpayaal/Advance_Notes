@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by RAJAT PAYAL on 25 MAY 2020
+ *  * Copyright (c) 2022.year . All rights reserved.
+ *  * Last modified 25 MAY 2020
+ *
+ *
+ */
 package com.example.simple_notes.adapters;
 
 import android.text.Layout;
@@ -38,7 +46,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
 
     private List<Note> notes;

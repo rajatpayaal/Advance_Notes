@@ -1,0 +1,15 @@
+<component name="CopyrightManager">
+  <settings default="RAJAT PAYAL">
+    <module2copyright>
+      <element module="All" copyright="RAJAT PAYAL" />
+      <element module="Project Files" copyright="RAJAT PAYAL" />
+      <element module="All Changed Files" copyright="RAJAT PAYAL" />
+      <element module="Tests" copyright="RAJAT PAYAL" />
+      <element module="Production" copyright="RAJAT PAYAL" />
+      <element module="Project Source Files" copyright="RAJAT PAYAL" />
+      <element module="Project Non-Source Files" copyright="RAJAT PAYAL" />
+      <element module="Open Files" copyright="RAJAT PAYAL" />
+      <element module="Scratches and Consoles" copyright="RAJAT PAYAL" />
+    </module2copyright>
+  </settings>
+</component>
