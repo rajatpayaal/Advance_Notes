@@ -17,7 +17,7 @@
         android:fontFamily="@font/ubuntu_medium"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="@string/layout_miscellaneous_text_miscellaneous_text"
+        android:text="@string/Edit_Note"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_13ssp" />
 
