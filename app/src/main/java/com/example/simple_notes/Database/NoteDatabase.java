@@ -5,7 +5,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.simple_notes.db.Notedao;
+import com.example.simple_notes.db.NoteDao;
 import com.example.simple_notes.entity.Note;
 
 @Database(entities = Note.class,version=1,exportSchema = false)
@@ -24,7 +24,7 @@ public abstract  class NoteDatabase extends RoomDatabase {
 
 
     }
-                public abstract Notedao notedao();
+    public abstract NoteDao notedao();
 }
 
 //            public abstract Notedb notedb();
