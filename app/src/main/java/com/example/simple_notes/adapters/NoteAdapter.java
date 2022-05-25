@@ -154,5 +154,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         if (timer != null) {
             timer.cancel();
         }
+
+
     }
 }
