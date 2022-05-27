@@ -304,6 +304,8 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
 //            }
             final EditText inputURL = view.findViewById(R.id.inputURL);
             final EditText inputURL2= view.findViewById(R.id.inputURL2);
+//            final EditText noteTitle=view.findViewById(R.id.inputNoteTitle);
+//            final EditText noteSubtitle=view.findViewById(R.id.inputNoteSubtitle);
             inputURL.requestFocus();
             inputURL2.requestFocus();
 
@@ -319,10 +321,19 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                intent.putExtra("isFromQuickActions", true);
                intent.putExtra("quickActionType", "URL");
                intent.putExtra("URL", " www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
+//               noteTitle.setText(inputURLStr+inputURLStr2);
+//               intent.putExtra("noteTitle",noteTitle.getText().toString());
+//               startActivity(intent);
+
+
+
+//               noteTitle.setText("URL");
+//               noteSubtitle.setText("URL");
 
 //               www.google.com/maps/place/30.1160344 78.2972843
                startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
                dialogAddURL.dismiss();
+
            }else{
                ActivityCompat.requestPermissions(MainActivity.this
                ,new String[]{

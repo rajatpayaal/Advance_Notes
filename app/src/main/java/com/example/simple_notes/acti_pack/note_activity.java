@@ -8,7 +8,6 @@
  */
 package com.example.simple_notes.acti_pack;
 
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -107,7 +106,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 public class note_activity extends AppCompatActivity {
         private static final String TAG = note_activity.class.getSimpleName();
 
@@ -145,7 +143,8 @@ public class note_activity extends AppCompatActivity {
             textWebURL = findViewById(R.id.textWebURL);
             layoutWebURL = findViewById(R.id.layoutWebURL);
 
-            textDateTime = findViewById(R.id.textDateTime);
+            textDateTime = findViewById(R.id.textDateTime)
+            ;
             textDateTime.setText(new SimpleDateFormat(
                     "EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault()).format(new Date().getTime())
             );
@@ -220,13 +219,15 @@ public class note_activity extends AppCompatActivity {
             final String dateTimeStr = textDateTime.getText().toString().trim();
 
             if (noteTitle.isEmpty()) {
-                Toast.makeText(this, "Note title can't be empty!", Toast.LENGTH_SHORT).show();
-                return;
+
+//                Toast.makeText(this, "Note title can't be empty!", Toast.LENGTH_SHORT).show();
+                inputNoteTitle.setText(textWebURL.getText().toString());
+                inputNoteSubtitle.setText(textWebURL.getText().toString());
+                return ;
             } else if (noteSubtitle.isEmpty() && noteText.isEmpty()) {
                 Toast.makeText(this, "Note can't be empty!", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             final Note note = new Note();
             note.setTitle(noteTitle);
             note.setSubtitle(noteSubtitle);
@@ -237,6 +238,7 @@ public class note_activity extends AppCompatActivity {
 
             if (layoutWebURL.getVisibility() == View.VISIBLE) {
                 note.setWeblink(textWebURL.getText().toString());
+
             }
 
             if (alreadyAvailableNote != null) {
