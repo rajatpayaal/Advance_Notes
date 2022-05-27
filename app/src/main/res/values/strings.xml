@@ -10,7 +10,7 @@
     <string name="activity_main_input_search_hint">Search notes</string>
     <string name="layout_add_url_text_add_url_title_text">Add URL</string>
     <string name="layout_add_url_input_url_hint">Enter URL</string>
-    <string name="layout_add_url_text_add_text">ADD Location</string>
+    <string name="layout_add_url_text_add_text">ADD</string>
     <string name="layout_add_url_text_cancel_text">CANCEL</string>
     <string name="layout_delete_note_text_delete_note_title_text">Delete Note</string>
     <string name="layout_delete_note_text_delete_note_message_text">Are you sure want to delete this note?</string>
