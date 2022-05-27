@@ -318,7 +318,9 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                Intent intent = new Intent(getApplicationContext(), note_activity.class);
                intent.putExtra("isFromQuickActions", true);
                intent.putExtra("quickActionType", "URL");
-               intent.putExtra("URL", "Latitude"+inputURLStr+","+"Longitude"+inputURLStr2);
+               intent.putExtra("URL", " www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
+
+//               www.google.com/maps/place/30.1160344 78.2972843
                startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
                dialogAddURL.dismiss();
            }else{
