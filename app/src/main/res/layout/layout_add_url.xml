@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_8sdp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_web_link"
+        android:src="@drawable/ic_location"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/colorWhite" />
@@ -58,6 +58,28 @@
         android:textSize="@dimen/_13ssp"
         app:layout_constraintTop_toBottomOf="@id/imageAddURL" />
 
+    <EditText
+        android:id="@+id/inputURL2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@null"
+        android:fontFamily="@font/ubuntu_regular"
+        android:gravity="center_vertical"
+        android:hint="@string/layout_add_url_input_url_hint"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:includeFontPadding="false"
+        android:inputType="textUri"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorTextHint"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintTop_toBottomOf="@id/inputURL" />
+
     <TextView
         android:id="@+id/textAdd"
         android:layout_width="wrap_content"
@@ -68,11 +90,11 @@
         android:includeFontPadding="false"
         android:padding="@dimen/_8sdp"
         android:text="@string/layout_add_url_text_add_text"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/black"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputURL" />
+        app:layout_constraintTop_toBottomOf="@id/inputURL2" />
 
     <TextView
         android:id="@+id/textCancel"
@@ -84,9 +106,9 @@
         android:includeFontPadding="false"
         android:padding="@dimen/_8sdp"
         android:text="@string/layout_add_url_text_cancel_text"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/black"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/textAdd"
-        app:layout_constraintTop_toBottomOf="@id/inputURL" />
+        app:layout_constraintTop_toBottomOf="@id/inputURL2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

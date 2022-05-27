@@ -16,9 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
+import android.provider.Settings;
+import android.text.Html;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,7 +37,15 @@ import com.example.simple_notes.R;
 import com.example.simple_notes.adapters.NoteAdapter;
 import com.example.simple_notes.entity.Note;
 import com.example.simple_notes.listeners.NotesListeners;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -62,6 +78,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements NotesListeners {
@@ -82,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
     private int noteClickedPosition = -1;
 
     private AlertDialog dialogAddURL;
+    FusedLocationProviderClient fusedLocationProviderClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +119,12 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
         noteList = new ArrayList<>();
         notesAdapter = new NoteAdapter(noteList, this);
         notesRecyclerView.setAdapter(notesAdapter);
-        ItemTouchHelper itemTouchHelper=new ItemTouchHelper(simpleCallback);
+
+        //location
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(notesRecyclerView);
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
@@ -157,6 +181,13 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
             } else {
                 Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
             }
+
+//            if(requestCode==100 && grantResults.length>0&&(grantResults[0]+grantResults[1]==PackageManager.PERMISSION_GRANTED)) {
+//                getCurrentLocation(view);
+//            }else{
+//                Toast.makeText(getApplicationContext(),"Premission denaied",Toast.LENGTH_SHORT);
+//
+//            }
         }
     }
 
@@ -259,35 +290,189 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                 dialogAddURL.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
 
+
+
+
+
+//            if (ActivityCompat.checkSelfPermission(MainActivity.this
+//                    , Manifest.permission.ACCESS_FINE_LOCATION) == getPackageManager().PERMISSION_GRANTED) {
+//                getLocation();
+//
+//            } else {
+//                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+//
+//            }
             final EditText inputURL = view.findViewById(R.id.inputURL);
+            final EditText inputURL2= view.findViewById(R.id.inputURL2);
             inputURL.requestFocus();
+            inputURL2.requestFocus();
 
             view.findViewById(R.id.textAdd).setOnClickListener(v -> {
-                final String inputURLStr = inputURL.getText().toString().trim();
 
-                if (inputURLStr.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Enter URL", Toast.LENGTH_SHORT).show();
-                } else if (!Patterns.WEB_URL.matcher(inputURLStr).matches()) {
-                    Toast.makeText(MainActivity.this, "Enter valid URL", Toast.LENGTH_SHORT).show();
-                } else {
-                    dialogAddURL.dismiss();
-                    Intent intent = new Intent(getApplicationContext(), note_activity.class);
-                    intent.putExtra("isFromQuickActions", true);
-                    intent.putExtra("quickActionType", "URL");
-                    intent.putExtra("URL", inputURLStr);
-                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
+           if(ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
+           && ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED){
 
-                }
+               getCurrentLocation(view);
+               String inputURLStr = inputURL.getText().toString();
+               String inputURLStr2=inputURL2.getText().toString();
+               Intent intent = new Intent(getApplicationContext(), note_activity.class);
+               intent.putExtra("isFromQuickActions", true);
+               intent.putExtra("quickActionType", "URL");
+               intent.putExtra("URL", "Latitude"+inputURLStr+","+"Longitude"+inputURLStr2);
+               startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
+               dialogAddURL.dismiss();
+           }else{
+               ActivityCompat.requestPermissions(MainActivity.this
+               ,new String[]{
+                       Manifest.permission.ACCESS_FINE_LOCATION,
+                               Manifest.permission.ACCESS_COARSE_LOCATION},100);
+
+           }
+//
+//                final String inputURLStr = inputURL.getText().toString().trim();
+//                //code..
+//
+//                if (inputURLStr.isEmpty()) {
+//                    Toast.makeText(MainActivity.this, "Enter URL", Toast.LENGTH_SHORT).show();
+//                } else if (!Patterns.WEB_URL.matcher(inputURLStr).matches()) {
+//                    Toast.makeText(MainActivity.this, "Enter valid URL", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    dialogAddURL.dismiss();
+//                    Intent intent = new Intent(getApplicationContext(), note_activity.class);
+//                    intent.putExtra("isFromQuickActions", true);
+//                    intent.putExtra("quickActionType", "URL");
+//                    intent.putExtra("URL", inputURLStr);
+//                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
+//
+//                }
             });
+
 
 
 
 
             view.findViewById(R.id.textCancel).setOnClickListener(v -> dialogAddURL.dismiss());
         }
+
         dialogAddURL.show();
 
     }
+
+
+
+    @SuppressLint("MissingPermission")
+    private void getCurrentLocation(View view) {
+
+        LocationManager locationManager = (LocationManager) getSystemService(
+                Context.LOCATION_SERVICE
+        );
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    Location location=task.getResult();
+                     if(location !=null){
+                         LocationRequest locationRequest=new LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                                 .setInterval(1000).setFastestInterval(1000)
+                                 .setFastestInterval(1);
+
+                         LocationCallback locationCallback=new LocationCallback() {
+                             @Override
+                             public void onLocationResult(@NonNull LocationResult locationResult) {
+                                 Location location1=locationResult.getLastLocation();
+                                 final EditText inputURL = view.findViewById(R.id.inputURL);
+                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
+                                inputURL.setText(String.valueOf(location1.getLatitude()));
+                                inputURL2.setText(String.valueOf(location1.getLongitude()));
+//                                 String inputURLStr = inputURL.getText().toString();
+//                                 String inputURLStr2=inputURL2.getText().toString();
+//                                Intent intent = new Intent(getApplicationContext(), note_activity.class);
+//                    intent.putExtra("isFromQuickActions", true);
+//                    intent.putExtra("quickActionType", "URL");
+//                    intent.putExtra("URL", inputURLStr);
+//                    intent.putExtra("URL2",inputURLStr2);
+//                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
+
+                             }
+                         };
+                        fusedLocationProviderClient.requestLocationUpdates(locationRequest,
+                                locationCallback, Looper.myLooper());
+
+                     }
+                }
+            });
+        }else{
+            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//     fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+//         @Override
+//         public void onComplete(@NonNull Task<Location> task) {
+//                         Location location=task.getResult();
+//            if(location !=null)
+//            try {
+//                Geocoder geocoder=new Geocoder(MainActivity.this,Locale.getDefault());
+//                List<Address>addresses=geocoder.getFromLocation(
+//                        location.getLatitude(),location.getLongitude(),1
+//                );
+//                //            final EditText inputURL = view.findViewById(R.id.inputURL);
+////            inputURL.requestFocus();
+//                final EditText inputURL = findViewById(R.id.inputURL);
+//                inputURL.setText(Html.fromHtml(
+//                        "<font color= '#6200E'><b>Latitude:</b></br></font>"+addresses.get(0).getLatitude()
+//                ));
+//            }catch (IOException e){
+//            e.printStackTrace();
+//            }
+//
+//            }
+//
+//     });
+//        }
+
+//        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Location> task) {
+//            Location location=task.getResult();
+//            if(location !=null)
+//            try {
+//                Geocoder geocoder=new Geocoder(MainActivity.this,Locale.getDefault());
+//                List<Address>addresses=geocoder.getFromLocation(
+//                        location.getLatitude(),location.getLongitude(),1
+//                );
+//                //            final EditText inputURL = view.findViewById(R.id.inputURL);
+////            inputURL.requestFocus();
+//                final EditText inputURL = findViewById(R.id.inputURL);
+//                inputURL.setText(Html.fromHtml(
+//                        "<font color= '#6200E'><b>Latitude:</b></br></font>"+addresses.get(0).getLatitude()
+//                ));
+//            }catch (IOException e){
+//            e.printStackTrace();
+//            }
+//
+//            }
+//        });
+    }
+
 
     ItemTouchHelper.SimpleCallback simpleCallback=new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP|ItemTouchHelper.DOWN | ItemTouchHelper.START |ItemTouchHelper.END,0) {
         @Override
