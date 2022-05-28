@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
     private RecyclerView notesRecyclerView;
     private List<Note> noteList;
     private NoteAdapter notesAdapter;
-
+    String Cityname = "";
+    String address1="";
     private int noteClickedPosition = -1;
 
     private AlertDialog dialogAddURL;
@@ -320,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                Intent intent = new Intent(getApplicationContext(), note_activity.class);
                intent.putExtra("isFromQuickActions", true);
                intent.putExtra("quickActionType", "URL");
-               intent.putExtra("URL", " www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
+               intent.putExtra("URL", Cityname+address1+"www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
 //               noteTitle.setText(inputURLStr+inputURLStr2);
 //               intent.putExtra("noteTitle",noteTitle.getText().toString());
 //               startActivity(intent);
@@ -379,6 +380,7 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
         LocationManager locationManager = (LocationManager) getSystemService(
                 Context.LOCATION_SERVICE
         );
+
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
         || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -397,7 +399,22 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                                  final EditText inputURL = view.findViewById(R.id.inputURL);
                                  final EditText inputURL2=view.findViewById(R.id.inputURL2);
                                 inputURL.setText(String.valueOf(location1.getLatitude()));
+
                                 inputURL2.setText(String.valueOf(location1.getLongitude()));
+
+                                 Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
+                                 try {
+                                     List<Address> addresses = geocoder.getFromLocation(location1.getLatitude(), location1.getLongitude(), 1);
+                                     String address = addresses.get(0).getAddressLine(0);
+                                     Cityname = addresses.get(0).getLocality();
+                                     address1=addresses.get(0).getAddressLine(0);
+
+                                     Log.d("mylog", "Complete Address: " + addresses.toString());
+                                     Log.d("mylog", "Address: " + address);
+                                 } catch (IOException e) {
+                                     e.printStackTrace();
+                                 }
+
 //                                 String inputURLStr = inputURL.getText().toString();
 //                                 String inputURLStr2=inputURL2.getText().toString();
 //                                Intent intent = new Intent(getApplicationContext(), note_activity.class);
