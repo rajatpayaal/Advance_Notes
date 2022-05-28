@@ -492,7 +492,7 @@ public class note_activity extends AppCompatActivity {
             if (dialogAddURL == null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(note_activity.this);
                 View view = LayoutInflater.from(this)
-                        .inflate(R.layout.layout_add_url, findViewById(R.id.layoutAddUrlContainer));
+                        .inflate(R.layout.layout_add_url_1, findViewById(R.id.layoutAddUrlContainer));
                 builder.setView(view);
 
                 dialogAddURL = builder.create();

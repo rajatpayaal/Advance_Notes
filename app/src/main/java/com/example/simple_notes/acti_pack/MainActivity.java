@@ -321,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                Intent intent = new Intent(getApplicationContext(), note_activity.class);
                intent.putExtra("isFromQuickActions", true);
                intent.putExtra("quickActionType", "URL");
-               intent.putExtra("URL", Cityname+address1+"www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
+               intent.putExtra("URL", Cityname+address1 + "www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
 //               noteTitle.setText(inputURLStr+inputURLStr2);
 //               intent.putExtra("noteTitle",noteTitle.getText().toString());
 //               startActivity(intent);
