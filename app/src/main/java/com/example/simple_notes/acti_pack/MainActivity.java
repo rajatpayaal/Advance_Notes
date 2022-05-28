@@ -165,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
         findViewById(R.id.imageAddWebLink).setOnClickListener(v -> showAddURLDialog());
     }
 
+
     @SuppressLint("QueryPermissionsNeeded")
     private void selectImage() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -289,76 +290,40 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
             dialogAddURL = builder.create();
             if (dialogAddURL.getWindow() != null) {
                 dialogAddURL.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }if(ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED) {
+
+                getCurrentLocation(view);
             }
+                else{
+                    ActivityCompat.requestPermissions(MainActivity.this
+                            ,new String[]{
+                                    Manifest.permission.ACCESS_FINE_LOCATION,
+                                    Manifest.permission.ACCESS_COARSE_LOCATION},100);
+
+                }
 
 
 
-
-
-//            if (ActivityCompat.checkSelfPermission(MainActivity.this
-//                    , Manifest.permission.ACCESS_FINE_LOCATION) == getPackageManager().PERMISSION_GRANTED) {
-//                getLocation();
-//
-//            } else {
-//                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-//
-//            }
-            final EditText inputURL = view.findViewById(R.id.inputURL);
+                final EditText inputURL = view.findViewById(R.id.inputURL);
             final EditText inputURL2= view.findViewById(R.id.inputURL2);
-//            final EditText noteTitle=view.findViewById(R.id.inputNoteTitle);
-//            final EditText noteSubtitle=view.findViewById(R.id.inputNoteSubtitle);
+
             inputURL.requestFocus();
             inputURL2.requestFocus();
 
             view.findViewById(R.id.textAdd).setOnClickListener(v -> {
 
-           if(ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
-           && ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED){
-
-               getCurrentLocation(view);
                String inputURLStr = inputURL.getText().toString();
                String inputURLStr2=inputURL2.getText().toString();
                Intent intent = new Intent(getApplicationContext(), note_activity.class);
                intent.putExtra("isFromQuickActions", true);
                intent.putExtra("quickActionType", "URL");
-               intent.putExtra("URL", Cityname+address1 + "www.google.com/maps/place/"+inputURLStr+","+"Longitude"+inputURLStr2);
-//               noteTitle.setText(inputURLStr+inputURLStr2);
-//               intent.putExtra("noteTitle",noteTitle.getText().toString());
-//               startActivity(intent);
+               intent.putExtra("URL", Cityname+","+ address1+","+"www.google.com/maps/place/"+"Latitude"+inputURLStr+","+"Longitude"+inputURLStr2);
 
-
-
-//               noteTitle.setText("URL");
-//               noteSubtitle.setText("URL");
-
-//               www.google.com/maps/place/30.1160344 78.2972843
                startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
                dialogAddURL.dismiss();
 
-           }else{
-               ActivityCompat.requestPermissions(MainActivity.this
-               ,new String[]{
-                       Manifest.permission.ACCESS_FINE_LOCATION,
-                               Manifest.permission.ACCESS_COARSE_LOCATION},100);
 
-           }
-//
-//                final String inputURLStr = inputURL.getText().toString().trim();
-//                //code..
-//
-//                if (inputURLStr.isEmpty()) {
-//                    Toast.makeText(MainActivity.this, "Enter URL", Toast.LENGTH_SHORT).show();
-//                } else if (!Patterns.WEB_URL.matcher(inputURLStr).matches()) {
-//                    Toast.makeText(MainActivity.this, "Enter valid URL", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    dialogAddURL.dismiss();
-//                    Intent intent = new Intent(getApplicationContext(), note_activity.class);
-//                    intent.putExtra("isFromQuickActions", true);
-//                    intent.putExtra("quickActionType", "URL");
-//                    intent.putExtra("URL", inputURLStr);
-//                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
-//
-//                }
             });
 
 
