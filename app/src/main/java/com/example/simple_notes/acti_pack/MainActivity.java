@@ -124,9 +124,9 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
         //location
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-//
-//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-//        itemTouchHelper.attachToRecyclerView(notesRecyclerView);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(notesRecyclerView);
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
@@ -362,11 +362,11 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                              @Override
                              public void onLocationResult(@NonNull LocationResult locationResult) {
                                  Location location1=locationResult.getLastLocation();
-//                                 final EditText inputURL = view.findViewById(R.id.inputURL);
-//                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
-//                                inputURL.setText(String.valueOf(location1.getLatitude()));
-//
-//                                inputURL2.setText(String.valueOf(location1.getLongitude()));
+                                 final EditText inputURL = view.findViewById(R.id.inputURL);
+                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
+                                inputURL.setText(String.valueOf(location1.getLatitude()));
+
+                                inputURL2.setText(String.valueOf(location1.getLongitude()));
 
                                  Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
                                  try {
@@ -381,14 +381,14 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                                      e.printStackTrace();
                                  }
 
-//                                 String inputURLStr = inputURL.getText().toString();
-//                                 String inputURLStr2=inputURL2.getText().toString();
-//                                Intent intent = new Intent(getApplicationContext(), note_activity.class);
-//                    intent.putExtra("isFromQuickActions", true);
-//                    intent.putExtra("quickActionType", "URL");
-//                    intent.putExtra("URL", inputURLStr);
-//                    intent.putExtra("URL2",inputURLStr2);
-//                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
+                                 String inputURLStr = inputURL.getText().toString();
+                                 String inputURLStr2=inputURL2.getText().toString();
+                                Intent intent = new Intent(getApplicationContext(), note_activity.class);
+                    intent.putExtra("isFromQuickActions", true);
+                    intent.putExtra("quickActionType", "URL");
+                    intent.putExtra("URL", inputURLStr);
+                    intent.putExtra("URL2",inputURLStr2);
+                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
 
                              }
                          };
@@ -470,23 +470,23 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
     }
 
 
-//    ItemTouchHelper.SimpleCallback simpleCallback=new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP|ItemTouchHelper.DOWN | ItemTouchHelper.START |ItemTouchHelper.END,0) {
-//        @Override
-//        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-//            int fromPosition =viewHolder.getAdapterPosition();
-//            int toPosition =target.getAdapterPosition();
-//
-//            Collections.swap(noteList,fromPosition,toPosition);
-//            recyclerView.getAdapter().notifyItemMoved(fromPosition,toPosition);
-//
-//
-//            return false;
-//        }
+    ItemTouchHelper.SimpleCallback simpleCallback=new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP|ItemTouchHelper.DOWN | ItemTouchHelper.START |ItemTouchHelper.END,0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            int fromPosition =viewHolder.getAdapterPosition();
+            int toPosition =target.getAdapterPosition();
 
-//        @Override
+            Collections.swap(noteList,fromPosition,toPosition);
+            recyclerView.getAdapter().notifyItemMoved(fromPosition,toPosition);
+
+
+            return false;
+        }
+
+        @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
         }
     };
 
-//}
+}
