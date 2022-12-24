@@ -126,29 +126,29 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         }
     }
 
-    public void searchNotes(final String searchKeyword) {
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (searchKeyword.trim().isEmpty()) {
-                    notes = notesSource;
-                } else {
-                    ArrayList<Note> temp = new ArrayList<>();
-                    for (Note note : notesSource) {
-                        if (note.getTitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
-                                note.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
-                                note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())) {
-                            temp.add(note);
-                        }
-                    }
-                    notes = temp;
-                }
-
-                new Handler(Looper.getMainLooper()).post(() -> notifyDataSetChanged());
-            }
-        }, 500);
-    }
+//    public void searchNotes(final String searchKeyword) {
+//        timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                if (searchKeyword.trim().isEmpty()) {
+//                    notes = notesSource;
+//                } else {
+//                    ArrayList<Note> temp = new ArrayList<>();
+//                    for (Note note : notesSource) {
+//                        if (note.getTitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
+//                                note.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
+//                                note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())) {
+//                            temp.add(note);
+//                        }
+//                    }
+//                    notes = temp;
+//                }
+//
+//                new Handler(Looper.getMainLooper()).post(() -> notifyDataSetChanged());
+//            }
+//        }, 500);
+//    }
 
     public void cancelTimer() {
         if (timer != null) {

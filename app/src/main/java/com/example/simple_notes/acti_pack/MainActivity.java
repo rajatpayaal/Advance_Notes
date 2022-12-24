@@ -124,9 +124,9 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
         //location
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(notesRecyclerView);
+//
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+//        itemTouchHelper.attachToRecyclerView(notesRecyclerView);
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (noteList.size() != 0) {
-                    notesAdapter.searchNotes(s.toString());
-                }
+//                if (noteList.size() != 0) {
+//                    notesAdapter.searchNotes(s.toString());
+//                }
             }
         });
 
@@ -318,7 +318,8 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                Intent intent = new Intent(getApplicationContext(), note_activity.class);
                intent.putExtra("isFromQuickActions", true);
                intent.putExtra("quickActionType", "URL");
-               intent.putExtra("URL", Cityname+","+ address1+","+"www.google.com/maps/place/"+"Latitude"+inputURLStr+","+"Longitude"+inputURLStr2);
+               intent.putExtra("URL", Cityname+","+ address1+","+"www.google.com/maps/place/"+"Latitude"+inputURLStr+
+                       ","+"Longitude"+inputURLStr2);
 
                startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
                dialogAddURL.dismiss();
@@ -361,11 +362,11 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                              @Override
                              public void onLocationResult(@NonNull LocationResult locationResult) {
                                  Location location1=locationResult.getLastLocation();
-                                 final EditText inputURL = view.findViewById(R.id.inputURL);
-                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
-                                inputURL.setText(String.valueOf(location1.getLatitude()));
-
-                                inputURL2.setText(String.valueOf(location1.getLongitude()));
+//                                 final EditText inputURL = view.findViewById(R.id.inputURL);
+//                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
+//                                inputURL.setText(String.valueOf(location1.getLatitude()));
+//
+//                                inputURL2.setText(String.valueOf(location1.getLongitude()));
 
                                  Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
                                  try {
@@ -469,23 +470,23 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
     }
 
 
-    ItemTouchHelper.SimpleCallback simpleCallback=new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP|ItemTouchHelper.DOWN | ItemTouchHelper.START |ItemTouchHelper.END,0) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            int fromPosition =viewHolder.getAdapterPosition();
-            int toPosition =target.getAdapterPosition();
+//    ItemTouchHelper.SimpleCallback simpleCallback=new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP|ItemTouchHelper.DOWN | ItemTouchHelper.START |ItemTouchHelper.END,0) {
+//        @Override
+//        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//            int fromPosition =viewHolder.getAdapterPosition();
+//            int toPosition =target.getAdapterPosition();
+//
+//            Collections.swap(noteList,fromPosition,toPosition);
+//            recyclerView.getAdapter().notifyItemMoved(fromPosition,toPosition);
+//
+//
+//            return false;
+//        }
 
-            Collections.swap(noteList,fromPosition,toPosition);
-            recyclerView.getAdapter().notifyItemMoved(fromPosition,toPosition);
-
-
-            return false;
-        }
-
-        @Override
+//        @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
         }
     };
 
-}
+//}
