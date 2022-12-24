@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
 
             @Override
             public void afterTextChanged(Editable s) {
-//                if (noteList.size() != 0) {
-//                    notesAdapter.searchNotes(s.toString());
-//                }
+                if (noteList.size() != 0) {
+                    notesAdapter.searchNotes(s.toString());
+                }
             }
         });
 
@@ -295,17 +295,17 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
 
                 getCurrentLocation(view);
             }
-                else{
-                    ActivityCompat.requestPermissions(MainActivity.this
-                            ,new String[]{
-                                    Manifest.permission.ACCESS_FINE_LOCATION,
-                                    Manifest.permission.ACCESS_COARSE_LOCATION},100);
+            else{
+                ActivityCompat.requestPermissions(MainActivity.this
+                        ,new String[]{
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.ACCESS_COARSE_LOCATION},100);
 
-                }
+            }
 
 
 
-                final EditText inputURL = view.findViewById(R.id.inputURL);
+            final EditText inputURL = view.findViewById(R.id.inputURL);
             final EditText inputURL2= view.findViewById(R.id.inputURL2);
 
             inputURL.requestFocus();
@@ -313,16 +313,16 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
 
             view.findViewById(R.id.textAdd).setOnClickListener(v -> {
 
-               String inputURLStr = inputURL.getText().toString();
-               String inputURLStr2=inputURL2.getText().toString();
-               Intent intent = new Intent(getApplicationContext(), note_activity.class);
-               intent.putExtra("isFromQuickActions", true);
-               intent.putExtra("quickActionType", "URL");
-               intent.putExtra("URL", Cityname+","+ address1+","+"www.google.com/maps/place/"+"Latitude"+inputURLStr+
-                       ","+"Longitude"+inputURLStr2);
+                String inputURLStr = inputURL.getText().toString();
+                String inputURLStr2=inputURL2.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), note_activity.class);
+                intent.putExtra("isFromQuickActions", true);
+                intent.putExtra("quickActionType", "URL");
+                intent.putExtra("URL", Cityname+","+ address1+","+"www.google.com/maps/place/"+"Latitude"+inputURLStr+
+                        ","+"Longitude"+inputURLStr2);
 
-               startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
-               dialogAddURL.dismiss();
+                startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
+                dialogAddURL.dismiss();
 
 
             });
@@ -348,54 +348,54 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
         );
 
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                 @Override
                 public void onComplete(@NonNull Task<Location> task) {
                     Location location=task.getResult();
-                     if(location !=null){
-                         LocationRequest locationRequest=new LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                                 .setInterval(1000).setFastestInterval(1000)
-                                 .setFastestInterval(1);
+                    if(location !=null){
+                        LocationRequest locationRequest=new LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                                .setInterval(1000).setFastestInterval(1000)
+                                .setFastestInterval(1);
 
-                         LocationCallback locationCallback=new LocationCallback() {
-                             @Override
-                             public void onLocationResult(@NonNull LocationResult locationResult) {
-                                 Location location1=locationResult.getLastLocation();
-                                 final EditText inputURL = view.findViewById(R.id.inputURL);
-                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
-                                inputURL.setText(String.valueOf(location1.getLatitude()));
+                        LocationCallback locationCallback=new LocationCallback() {
+                            @Override
+                            public void onLocationResult(@NonNull LocationResult locationResult) {
+                                Location location1=locationResult.getLastLocation();
+//                                 final EditText inputURL = view.findViewById(R.id.inputURL);
+//                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
+//                                inputURL.setText(String.valueOf(location1.getLatitude()));
+//
+//                                inputURL2.setText(String.valueOf(location1.getLongitude()));
 
-                                inputURL2.setText(String.valueOf(location1.getLongitude()));
+                                Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
+                                try {
+                                    List<Address> addresses = geocoder.getFromLocation(location1.getLatitude(), location1.getLongitude(), 1);
+                                    String address = addresses.get(0).getAddressLine(0);
+                                    Cityname = addresses.get(0).getLocality();
+                                    address1=addresses.get(0).getAddressLine(0);
 
-                                 Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
-                                 try {
-                                     List<Address> addresses = geocoder.getFromLocation(location1.getLatitude(), location1.getLongitude(), 1);
-                                     String address = addresses.get(0).getAddressLine(0);
-                                     Cityname = addresses.get(0).getLocality();
-                                     address1=addresses.get(0).getAddressLine(0);
+                                    Log.d("mylog", "Complete Address: " + addresses.toString());
+                                    Log.d("mylog", "Address: " + address);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
 
-                                     Log.d("mylog", "Complete Address: " + addresses.toString());
-                                     Log.d("mylog", "Address: " + address);
-                                 } catch (IOException e) {
-                                     e.printStackTrace();
-                                 }
+//                                 String inputURLStr = inputURL.getText().toString();
+//                                 String inputURLStr2=inputURL2.getText().toString();
+//                                Intent intent = new Intent(getApplicationContext(), note_activity.class);
+//                    intent.putExtra("isFromQuickActions", true);
+//                    intent.putExtra("quickActionType", "URL");
+//                    intent.putExtra("URL", inputURLStr);
+//                    intent.putExtra("URL2",inputURLStr2);
+//                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
 
-                                 String inputURLStr = inputURL.getText().toString();
-                                 String inputURLStr2=inputURL2.getText().toString();
-                                Intent intent = new Intent(getApplicationContext(), note_activity.class);
-                    intent.putExtra("isFromQuickActions", true);
-                    intent.putExtra("quickActionType", "URL");
-                    intent.putExtra("URL", inputURLStr);
-                    intent.putExtra("URL2",inputURLStr2);
-                    startActivityForResult(intent, REQUEST_CODE_ADD_NOTE);
-
-                             }
-                         };
+                            }
+                        };
                         fusedLocationProviderClient.requestLocationUpdates(locationRequest,
                                 locationCallback, Looper.myLooper());
 
-                     }
+                    }
                 }
             });
         }else{
