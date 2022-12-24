@@ -362,11 +362,11 @@ public class MainActivity extends AppCompatActivity implements NotesListeners {
                             @Override
                             public void onLocationResult(@NonNull LocationResult locationResult) {
                                 Location location1=locationResult.getLastLocation();
-//                                 final EditText inputURL = view.findViewById(R.id.inputURL);
-//                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
-//                                inputURL.setText(String.valueOf(location1.getLatitude()));
-//
-//                                inputURL2.setText(String.valueOf(location1.getLongitude()));
+                                 final EditText inputURL = view.findViewById(R.id.inputURL);
+                                 final EditText inputURL2=view.findViewById(R.id.inputURL2);
+                                inputURL.setText(String.valueOf(location1.getLatitude()));
+
+                                inputURL2.setText(String.valueOf(location1.getLongitude()));
 
                                 Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
                                 try {
