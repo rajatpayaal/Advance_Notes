@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Simple_Notes</string>
-    <string name="simple_notes">Simple_Notes</string>
+    <string name="app_name">Advance_Notes</string>
+    <string name="simple_notes">Advance_Notes</string>
     <string name="type_note" />
     <string name="search_note" />
     <string name="activity_create_note_input_note_title_hint">Note Title</string>
