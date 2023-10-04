@@ -3,6 +3,22 @@
 
 In today's fast-paced world, where hectic work schedules often lead to missed tasks and appointments, the Android Advance Notes Application stands as your go-to solution. This innovative app is designed to revolutionize your note-taking experience and enhance your overall organization. Here are its key features are...
 
+
+## Screenshots
+
+
+<p>
+<img align="center" width="250" height="450" src="https://imgur.com/gkZ8w9u.jpg"> ||
+<img align="center" width="250" height="450" src="https://imgur.com/0i1k6SC.jpg"> ||
+<img align="center" width="250" height="450" src="https://imgur.com/raF2Xdo.jpg"> ||
+<br></br>
+<img align="center" width="250" height="450" src="https://imgur.com/NQgTPvo.jpg"> ||
+<img align="center" width="250" height="450" src="https://imgur.com/6HCYFh4.jpg"> ||
+<img align="center" width="250" height="450" src="https://imgur.com/8QBeTjy.jpg"> ||
+
+ </p>
+
+
 ## Features
 
 - #### Customizable Note Colors: Personalization is at your fingertips. Tailor your notes to your liking by changing their colors, ensuring a visually appealing and organized experience.
@@ -24,19 +40,6 @@ The Android Advance Notes Application empowers you to take control of your sched
 Insert gif or link to demo
 
 
-## Screenshots
-
-
-<p>
-<img align="center" width="250" height="450" src="https://imgur.com/gkZ8w9u.jpg"> ||
-<img align="center" width="250" height="450" src="https://imgur.com/0i1k6SC.jpg"> ||
-<img align="center" width="250" height="450" src="https://imgur.com/raF2Xdo.jpg"> ||
-<br></br>
-<img align="center" width="250" height="450" src="https://imgur.com/NQgTPvo.jpg"> ||
-<img align="center" width="250" height="450" src="https://imgur.com/6HCYFh4.jpg"> ||
-<img align="center" width="250" height="450" src="https://imgur.com/8QBeTjy.jpg"> ||
-
- </p>
 
 ## Run Locally
 
