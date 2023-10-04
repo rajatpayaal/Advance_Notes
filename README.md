@@ -1,47 +1,128 @@
-#### Simple_Notes
+
+# Advance Notes 
+
+In today's fast-paced world, where hectic work schedules often lead to missed tasks and appointments, the Android Advance Notes Application stands as your go-to solution. This innovative app is designed to revolutionize your note-taking experience and enhance your overall organization. Here are its key features are...
+
+## Features
+
+- #### Customizable Note Colors: Personalization is at your fingertips. Tailor your notes to your liking by changing their colors, ensuring a visually appealing and organized experience.
+
+- #### Live Location Saving: Seamlessly associate specific locations with your notes. This feature is invaluable for capturing location-based information and adding context to your tasks.
+
+- #### Efficient Note Management: Our intuitive drag-and-drop functionality simplifies the organization of your notes, streamlining your workflow and boosting productivity.
+
+- #### Enhanced Security: Protect your private information with optional password protection, ensuring that sensitive data remains inaccessible to unauthorized users.
+
+- #### Optimized Performance: Utilizing Room Database, the app offers improved speed and responsiveness, guaranteeing efficient data storage and retrieval.
+
+- #### Image Integration: Elevate your notes by adding images, providing a dynamic and visual dimension to your information.
+
+The Android Advance Notes Application empowers you to take control of your schedule, tasks, and priorities. With its user-friendly interface and feature-rich capabilities, it's your dependable personal assistant, ensuring that nothing slips through the cracks in your busy life. 
+
+## Demo
+
+Insert gif or link to demo
 
 
-#Simple Notes App
+## Screenshots
 
-#Notes are a great way to keep track of information for yourself, but it also makes it easy to share information with others (like your grocery list with your husband!) Open a note you want to share and tap Share.
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
-#This app must be built in Java and run on Marshmallow 6.0 (API level 23).
-#Functionality:-
-	1. Create a new to do item and edit an existing item and permanently remove an item
-Todo: use of Recyclerview.. 
+## Run Locally
 
-	a. Data must be saved into a sql database for offline usage
+Clone the project
 
-https://www.techypid.com/insert-and-display-data-in-recyclerview/(new room concept)
+```bash
+  git clone https://link-to-project
+```
 
-#dependencies {
-    def room_version = "2.4.2"
+Go to the project directory
 
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+```bash
+  run in android studio
+```
 
+Install dependencies
+
+```bash
+  Automatic dependencies on the bases of SDK version 
+```
+
+Start the server
+
+```bash
+  plugins {
+    id 'com.android.application'
 }
 
-#Difference between SQLite and Room persistence library:-
+android {
+    compileSdk 32
 
-1.In case of SQLite, There is no compile time verification of raw SQLite queries. But in Room there is SQL validation at compile time.
-2.As your schema changes, you need to update the affected SQL queries manually. Room solves this problem.
-3.You need to use lots of boilerplate code to convert between SQL queries and Java data objects. But, Room maps our database objects to Java Object 4.without boilerplate code.
-4.Room is built to work with LiveData and RxJava for data observation, while SQLite does not.
+    defaultConfig {
+        applicationId "com.example.simple_notes"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.room:room-runtime:2.4.2'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-<!-- 
-	2. Mark an existing item as done
-	a. Show the user items still to do and items marked as done
-	3. The to do item view must show the updated on date time formatted in the same style as Wed, Jul 4, &#39;01 12:08 PM
-Add a location marker to a to do item
-	a. The user must be able to drop a pin on a map view
-	b. The user must be able see a the map marker of the location chosen in the to do items view
-	c. The user must be able to edit the location
-	d. The user must be able to remove the location from the to do item view
-Add an image to the to do item
-	a. The user must be able to open the camera or gallery application on their device and take an image
-	b. The image must be shown as a thumbnail on the to do item view
-	c. The image can be swapped by the user for a different one
-	d. The user must be able to remove the image from the view -->
+    implementation "androidx.room:room-common:2.4.2"
+    annotationProcessor "androidx.room:room-compiler:2.4.2"
+
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+
+    implementation"com.google.android.material:material:1.6.0"
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // https://github.com/bumptech/glide
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+
+}
+```
+
+
+## Installation
+
+
+```bash
+  minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+```
+    
