@@ -37,7 +37,8 @@ The Android Advance Notes Application empowers you to take control of your sched
 
 ## Demo
 
-[Demo link install apk ](https://drive.google.com/file/d/1F_KlB555PytKlX-NzuXfSHv5RXNmlkp6/view?usp=sharing)
+[Download APK](https://drive.google.com/file/d/1F_KlB555PytKlX-NzuXfSHv5RXNmlkp6/view?usp=sharing)
+
 
 
 
